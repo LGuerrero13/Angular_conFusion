@@ -1,0 +1,59 @@
+<div class="container"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center"
+    fxLayoutGap="10px" 
+    fxLayoutGap.xs="0">
+
+  <div fxFlex="40">
+    <mat-card *ngIf="dish">
+      <mat-card-header>
+        <mat-card-title>
+          <h3>{{dish.name | uppercase }}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+      <mat-card-content>
+        <div>
+          <p>{{dish.description}}</p>
+        </div>
+
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div fxFlex="40" *ngIf="dish">
+    <mat-list>
+
+      <mat-list-item>
+        <h3>{{'Comments' | uppercase}}</h3>
+      </mat-list-item>
+
+      <mat-list-item *ngFor="let comments of dish.comments">
+
+        <!-- mat-line idea https://stackoverflow.com/questions/47377146/angular-material-5-show-full-text-in-mat-lists-word-wrap -->
+        <p mat-line>
+          <span>{{comments.comment}}</span>
+        </p>
+
+        <p mat-line>
+          <span>
+              {{comments.rating}} Stars
+          </span>
+        </p>
+
+        <p mat-line>
+          <!-- https://angular.io/api/common/DatePipe -->
+          <span>-- {{comments.author}} {{comments.date | date}}</span>
+        </p>
+
+      </mat-list-item>
+
+    </mat-list>
+  </div>
+
+</div>
+
