@@ -63,7 +63,7 @@ export class ContactComponent implements OnInit {
     this.feedbackForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
 
-      this.onValueChanged(); // (re)set form validation messages
+    this.onValueChanged(); // (re)set form validation messages
   }
 
   onValueChanged(data?: any) {
@@ -71,7 +71,7 @@ export class ContactComponent implements OnInit {
     const form = this.feedbackForm;
     for (const field in this.formErrors) {
       if (this.formErrors.hasOwnProperty(field)) {
-        // clear pervious erro message (if any)
+        // clear pervious error message (if any)
         this.formErrors[field] = '';
         const control = form.get(field);
         if (control && control.dirty && !control.valid) {
