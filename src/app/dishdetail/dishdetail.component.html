@@ -6,7 +6,7 @@
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -32,7 +32,7 @@
     </mat-card>
   </div>
 
-  <div fxFlex="40" *ngIf="dish">
+  <div fxFlex="40" *ngIf="dish" [@visibility]="visibility">
     <mat-list>
 
       <mat-list-item>
@@ -78,7 +78,7 @@
     <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
       <p>
         <mat-form-field class="full-width">
-          <input matInput formControlName="author" placeholder="Author" type="text" required>
+          <input matInput formControlName="author" placeholder="Name" type="text" required>
             <mat-error *ngIf="formErrors.author">
                 {{formErrors.author}}
             </mat-error>
